@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TestChangement : MonoBehaviour
 {
-    int test = 0;
+    string testString = "Yo c'est un test";
     // Start is called before the first frame update
     void Start()
     {
