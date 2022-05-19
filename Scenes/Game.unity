@@ -303,13 +303,27 @@ GameObject:
   - component: {fileID: 1295797999}
   - component: {fileID: 1295797998}
   - component: {fileID: 1295797997}
+  - component: {fileID: 1295797996}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1295797996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1295797995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2029822e4ea127e43b9ca24895fe2d6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UiCrosshair: {fileID: 419842283}
 --- !u!114 &1295797997
 MonoBehaviour:
   m_ObjectHideFlags: 0
