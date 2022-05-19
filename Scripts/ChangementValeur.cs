@@ -5,15 +5,16 @@ using UnityEngine.UI;
 
 public class ChangementValeur : MonoBehaviour
 {
-    Slider sliderDifficulty;
-    [SerializeField] Text displayDifficulty;
+    [SerializeField] string information;
+    Slider sliderSelected;
+    [SerializeField] Text displayValue;
 
     private void Awake()
     {
-        sliderDifficulty = GetComponent<Slider>();
+        sliderSelected = GetComponent<Slider>();
     }
     public void displayDiffulty()
     {
-        displayDifficulty.text = "Difficulty : "+sliderDifficulty.value;
+        displayValue.text =  information + " : " + sliderSelected.value;
     }
 }

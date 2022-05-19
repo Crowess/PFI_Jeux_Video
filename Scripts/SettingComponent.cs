@@ -8,8 +8,8 @@ public class SettingComponent : MonoBehaviour
     Canvas setting;
     [SerializeField] Canvas confirmation;
     [SerializeField] Canvas mainMenu;
-    [SerializeField] InputField inputName;
     [SerializeField] Slider sliderDifficulty;
+    [SerializeField] Slider sliderSensitivity;
 
     void Awake()
     {
@@ -25,7 +25,7 @@ public class SettingComponent : MonoBehaviour
     public void Confirm()
     {
         //TODO PLAYER PREF
-        PlayerPrefs.SetString("PlayerName", !string.IsNullOrEmpty(inputName.text)? inputName.text : "Default" );
+        PlayerPrefs.SetFloat("Sensitivity", sliderSensitivity.value);
         PlayerPrefs.SetFloat("Difficulty", sliderDifficulty.value);
         PlayerPrefs.Save();
         Cancel();
