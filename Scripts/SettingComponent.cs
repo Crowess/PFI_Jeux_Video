@@ -10,6 +10,7 @@ public class SettingComponent : MonoBehaviour
     [SerializeField] Canvas mainMenu;
     [SerializeField] Slider sliderDifficulty;
     [SerializeField] Slider sliderSensitivity;
+    [SerializeField] Dropdown dropDownCrosshair;
 
     void Awake()
     {
@@ -24,9 +25,9 @@ public class SettingComponent : MonoBehaviour
 
     public void Confirm()
     {
-        //TODO PLAYER PREF
         PlayerPrefs.SetFloat("Sensitivity", sliderSensitivity.value);
         PlayerPrefs.SetFloat("Difficulty", sliderDifficulty.value);
+        PlayerPrefs.SetString("Crosshair","Crosshair_"+dropDownCrosshair.value);
         PlayerPrefs.Save();
         Cancel();
         OpenMainMenu();

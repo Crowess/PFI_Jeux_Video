@@ -3628,7 +3628,7 @@ MonoBehaviour:
   m_Options:
     m_Options:
     - m_Text: Option A
-      m_Image: {fileID: 0}
+      m_Image: {fileID: 21300000, guid: 3a907faa5b89ecc4bb72a724b7a26155, type: 3}
     - m_Text: Option B
       m_Image: {fileID: 0}
     - m_Text: Option C
