@@ -11,6 +11,6 @@ public class UISetupComponent : MonoBehaviour
     void Awake()
     {
         string crosshairName = !string.IsNullOrEmpty(PlayerPrefs.GetString("Crosshair")) ? PlayerPrefs.GetString("Crosshair") : "Crosshair_0"; //Met comme default Crosshair_0
-        UiCrosshair.sprite = Resources.Load<Sprite>("Spites/"+crosshairName);
+        UiCrosshair.sprite = Resources.Load<Sprite>("Sprites/"+crosshairName);
     }
 }
