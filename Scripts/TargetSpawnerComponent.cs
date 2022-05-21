@@ -6,20 +6,32 @@ public class TargetSpawnerComponent : MonoBehaviour
 {
     [SerializeField] ObjectPoolComponent targetPool;
     [SerializeField] GameObject joueur;
-    [SerializeField] float timer;
-    [SerializeField] float radius = 1;
+    [SerializeField] float cooldown = 5;
+    [SerializeField] float radius = 40;
+    float elapsedTime = 0f;
     void Awake()
     {
+
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        elapsedTime += Time.deltaTime;
+
+        if (elapsedTime >= cooldown)
+        {
+            elapsedTime -= cooldown;
+            Spawn();
+        }
     }
+
     void Spawn()
     {
         GameObject objectSpawned = targetPool.GetObject();
-        objectSpawned.transform.position = (new Vector2(2, 2) + Random.insideUnitCircle * radius);
+        Debug.Log(objectSpawned);
+        Vector3 positionTarget = Random.insideUnitSphere * radius;
+        positionTarget.y = joueur.transform.position.y;
+        objectSpawned.transform.position = positionTarget;
         objectSpawned.transform.LookAt(joueur.transform);
         objectSpawned.SetActive(true);
     }
