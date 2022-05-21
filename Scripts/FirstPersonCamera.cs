@@ -11,6 +11,7 @@ public class FirstPersonCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sensibility = PlayerPrefs.GetFloat("Sensitivity") > 0 ? PlayerPrefs.GetFloat("Sensitivity")*10:100;
         Cursor.lockState = CursorLockMode.Locked; // barre le cursor et le fait disparaite
     }
 
