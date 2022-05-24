@@ -12,7 +12,7 @@ public class DisableOverTimeComponent : MonoBehaviour
 
     private void Awake()
     {
-        timeBeforeDisable = PlayerPrefs.GetFloat("Difficulty") > 0 ? PlayerPrefs.GetFloat("Difficulty") / baseTime : baseTime;
+        timeBeforeDisable = PlayerPrefs.GetFloat("Difficulty") > 1 ? baseTime/PlayerPrefs.GetFloat("Difficulty") : baseTime;
     }
 
 
