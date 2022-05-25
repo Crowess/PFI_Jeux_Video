@@ -7,6 +7,9 @@ using UnityEngine.InputSystem;
 
 public class FireComponent : MonoBehaviour
 {
+    [SerializeField] Transform exitLocation;
+    Ray ray;
+
     [SerializeField] Animator animator;
     PlayerControls playerControls;
     void Awake()
@@ -15,7 +18,16 @@ public class FireComponent : MonoBehaviour
         playerControls.Enable();
         playerControls.PC.Fire.performed += (ctx) =>
         {
-            //Rajouter le code pour raycasting 
+            ray = new Ray(exitLocation.position, exitLocation.forward);
+            Debug.DrawRay(ray.origin, ray.direction, Color.black, 100f);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.transform.name == "Contour" )
+                {
+                    hit.transform.parent.gameObject.SetActive(false);
+                }
+            }
             animator.SetTrigger("Fire");
         };
         
@@ -23,6 +35,6 @@ public class FireComponent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
