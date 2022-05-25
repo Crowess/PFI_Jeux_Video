@@ -14,9 +14,4 @@ public class TargetComponent : MonoBehaviour,IPoolable
             AssociatedPool.PutObject(gameObject);
         };
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
 }

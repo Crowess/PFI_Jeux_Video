@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 // Sprite animation 2d https://learn.unity.com/tutorial/introduction-to-sprite-animations
 // pour comprendre les triggers https://docs.unity3d.com/ScriptReference/Animator.SetTrigger.html
 
@@ -13,6 +15,7 @@ public class FireComponent : MonoBehaviour
     public string status;
     private int point = 1;
     private int streak = 1;
+
     [SerializeField] Animator animator;
     PlayerControls playerControls;
     void Awake()
@@ -30,6 +33,7 @@ public class FireComponent : MonoBehaviour
                 {
                     status = "Hit! + " + point * streak + " points!";
                     pointage += point * streak;
+                    hit.transform.parent.GetComponent<TargetComponent>().AssociatedPool.PutObject(hit.transform.parent.gameObject);
                     hit.transform.parent.gameObject.SetActive(false);
                     streak++;
                 }

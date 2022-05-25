@@ -9,7 +9,7 @@ public class ObjectPoolComponent : MonoBehaviour
     
     private ObjectPool<GameObject> objectPool;
 
-    public GameObject GetObject() => objectPool.GetObject();
+    public GameObject GetObject() => objectPool.GetObject();    
     public void PutObject(GameObject objectToPut) => objectPool.PutObject(objectToPut);
         
     private void Awake()
