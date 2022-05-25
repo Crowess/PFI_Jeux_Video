@@ -35,6 +35,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Menu"",
+                    ""type"": ""Button"",
+                    ""id"": ""6e8e80e0-7375-4d25-9b6a-2e65178952ab"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -48,6 +57,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""37ddefe3-9160-446d-8387-dfb1133454cd"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -57,6 +77,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         // PC
         m_PC = asset.FindActionMap("PC", throwIfNotFound: true);
         m_PC_Fire = m_PC.FindAction("Fire", throwIfNotFound: true);
+        m_PC_Menu = m_PC.FindAction("Menu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -117,11 +138,13 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PC;
     private IPCActions m_PCActionsCallbackInterface;
     private readonly InputAction m_PC_Fire;
+    private readonly InputAction m_PC_Menu;
     public struct PCActions
     {
         private @PlayerControls m_Wrapper;
         public PCActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Fire => m_Wrapper.m_PC_Fire;
+        public InputAction @Menu => m_Wrapper.m_PC_Menu;
         public InputActionMap Get() { return m_Wrapper.m_PC; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -134,6 +157,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Fire.started -= m_Wrapper.m_PCActionsCallbackInterface.OnFire;
                 @Fire.performed -= m_Wrapper.m_PCActionsCallbackInterface.OnFire;
                 @Fire.canceled -= m_Wrapper.m_PCActionsCallbackInterface.OnFire;
+                @Menu.started -= m_Wrapper.m_PCActionsCallbackInterface.OnMenu;
+                @Menu.performed -= m_Wrapper.m_PCActionsCallbackInterface.OnMenu;
+                @Menu.canceled -= m_Wrapper.m_PCActionsCallbackInterface.OnMenu;
             }
             m_Wrapper.m_PCActionsCallbackInterface = instance;
             if (instance != null)
@@ -141,6 +167,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Fire.started += instance.OnFire;
                 @Fire.performed += instance.OnFire;
                 @Fire.canceled += instance.OnFire;
+                @Menu.started += instance.OnMenu;
+                @Menu.performed += instance.OnMenu;
+                @Menu.canceled += instance.OnMenu;
             }
         }
     }
@@ -148,5 +177,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     public interface IPCActions
     {
         void OnFire(InputAction.CallbackContext context);
+        void OnMenu(InputAction.CallbackContext context);
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 // Sprite animation 2d https://learn.unity.com/tutorial/introduction-to-sprite-animations
 // pour comprendre les triggers https://docs.unity3d.com/ScriptReference/Animator.SetTrigger.html
 
-public class Fire : MonoBehaviour
+public class FireComponent : MonoBehaviour
 {
     [SerializeField] Animator animator;
     PlayerControls playerControls;
