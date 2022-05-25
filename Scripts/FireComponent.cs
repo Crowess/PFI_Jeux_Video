@@ -37,12 +37,20 @@ public class FireComponent : MonoBehaviour
                     hit.transform.parent.gameObject.SetActive(false);
                     streak++;
                 }
+                // s'il hit qqch d'autre qu'une cible
+                else
+                {
+                    status = "Missed! Streak lost...";
+                    streak = 1;
+                }
             }
+            // s'il hit rien
             else
             {
                 status = "Missed! Streak lost...";
                 streak = 1;
             }
+
             animator.SetTrigger("Fire");
         };
         
