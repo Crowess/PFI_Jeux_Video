@@ -9,7 +9,10 @@ public class FireComponent : MonoBehaviour
 {
     [SerializeField] Transform exitLocation;
     Ray ray;
-
+    public int pointage = 0;
+    public string status;
+    private int point = 1;
+    private int streak = 1;
     [SerializeField] Animator animator;
     PlayerControls playerControls;
     void Awake()
@@ -25,8 +28,16 @@ public class FireComponent : MonoBehaviour
             {
                 if (hit.transform.name == "Contour" )
                 {
+                    status = "Hit! + " + point * streak + " points!";
+                    pointage += point * streak;
                     hit.transform.parent.gameObject.SetActive(false);
+                    streak++;
                 }
+            }
+            else
+            {
+                status = "Missed! Streak lost...";
+                streak = 1;
             }
             animator.SetTrigger("Fire");
         };
