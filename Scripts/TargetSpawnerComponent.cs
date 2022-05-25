@@ -29,7 +29,7 @@ public class TargetSpawnerComponent : MonoBehaviour
     {
         GameObject objectSpawned = targetPool.GetObject();
         Debug.Log(objectSpawned);
-        Vector3 positionTarget = Random.insideUnitSphere * radius;
+        Vector3 positionTarget = new Vector3(2,2,2)+Random.insideUnitSphere * radius;
         positionTarget.y = joueur.transform.position.y;
         objectSpawned.transform.position = positionTarget;
         objectSpawned.transform.LookAt(joueur.transform);
