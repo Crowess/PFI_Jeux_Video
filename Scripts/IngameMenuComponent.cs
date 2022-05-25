@@ -7,6 +7,7 @@ public class IngameMenuComponent : MonoBehaviour
     [SerializeField] Canvas menu;
     FirstPersonCamera fpCamera;
     PlayerControls playerControls;
+
     void Awake()
     {
         playerControls = new PlayerControls();
@@ -19,9 +20,7 @@ public class IngameMenuComponent : MonoBehaviour
     {
         if (menu.gameObject.activeSelf)
         {
-            menu.gameObject.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked;
-            fpCamera.enabled = true;
+            Continue();
         }
         else
         {
@@ -32,8 +31,20 @@ public class IngameMenuComponent : MonoBehaviour
             
     }
 
-    void Update()
+    public void Continue()
     {
-        
+        menu.gameObject.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        fpCamera.enabled = true;
     }
+    public void QuitToMenu()
+    {
+
+    }
+    public void QuitToDesktop()
+    {
+        Application.Quit();
+    }
+
+
 }
