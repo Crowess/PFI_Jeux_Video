@@ -3937,7 +3937,6 @@ GameObject:
   - component: {fileID: 2069300169}
   - component: {fileID: 2069300168}
   - component: {fileID: 2069300167}
-  - component: {fileID: 2069300166}
   - component: {fileID: 2069300171}
   m_Layer: 0
   m_Name: Player
@@ -3946,18 +3945,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2069300166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2069300165}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bbe3aa27c4504143b2820b99e2b8a1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!136 &2069300167
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3979,7 +3966,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2069300165}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
