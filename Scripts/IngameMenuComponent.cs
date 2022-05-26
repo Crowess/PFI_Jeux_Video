@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
+using UnityEngine.SceneManagement;
 
 public class IngameMenuComponent : MonoBehaviour
 {
@@ -39,12 +41,7 @@ public class IngameMenuComponent : MonoBehaviour
     }
     public void QuitToMenu()
     {
-
+        EditorApplication.isPlaying = false;
     }
-    public void QuitToDesktop()
-    {
-        Application.Quit();
-    }
-
 
 }

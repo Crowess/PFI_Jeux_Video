@@ -22,14 +22,5 @@ public class MenuComponent : MonoBehaviour
     {
         SceneManager.LoadScene("loadingScene");
     }
-    public void StartGameDev()
-    {
-        PlayerPrefs.SetInt("devMode", 1);
-        PlayerPrefs.Save();
-        StartGame();
-    }
-    public void DevModeVisible()
-    {
-        btnDevMode.SetActive(!btnDevMode.activeSelf); //switch on et off si sa deviens visible
-    }
+   
 }
