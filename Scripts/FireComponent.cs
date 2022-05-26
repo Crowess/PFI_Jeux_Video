@@ -10,6 +10,8 @@ using UnityEngine.InputSystem;
 public class FireComponent : MonoBehaviour
 {
     [SerializeField] Transform exitLocation;
+    AudioSource audio;
+
     Ray ray;
     public int pointage = 0;
     public string status;
@@ -20,6 +22,7 @@ public class FireComponent : MonoBehaviour
     PlayerControls playerControls;
     void Awake()
     {
+        audio = GetComponent<AudioSource>();
         playerControls = new PlayerControls();
         playerControls.Enable();
         playerControls.PC.Fire.performed += (ctx) =>
@@ -51,6 +54,7 @@ public class FireComponent : MonoBehaviour
                 streak = 1;
             }
 
+            audio.Play();
             animator.SetTrigger("Fire");
         };
         
