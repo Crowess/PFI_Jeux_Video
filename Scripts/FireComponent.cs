@@ -10,7 +10,7 @@ using UnityEngine.InputSystem;
 public class FireComponent : MonoBehaviour
 {
     [SerializeField] Transform exitLocation;
-    AudioSource audio;
+    AudioSource audioShotgun;
 
     Ray ray;
     public int pointage = 0;
@@ -22,7 +22,7 @@ public class FireComponent : MonoBehaviour
     PlayerControls playerControls;
     void Awake()
     {
-        audio = GetComponent<AudioSource>();
+        audioShotgun = GetComponent<AudioSource>();
         playerControls = new PlayerControls();
         playerControls.Enable();
         playerControls.PC.Fire.performed += (ctx) =>
@@ -43,25 +43,23 @@ public class FireComponent : MonoBehaviour
                 // s'il hit qqch d'autre qu'une cible
                 else
                 {
-                    status = "Missed! Streak lost...";
-                    streak = 1;
+                    ResetStreak();
                 }
             }
             // s'il hit rien
             else
             {
-                status = "Missed! Streak lost...";
-                streak = 1;
+                ResetStreak();
             }
 
-            audio.Play();
+            audioShotgun.Play();
             animator.SetTrigger("Fire");
         };
         
     }
-    // Update is called once per frame
-    void Update()
+    public void ResetStreak(string raison = "Missed! Streak lost...")
     {
-
+        status = raison;
+        streak = 1;
     }
 }

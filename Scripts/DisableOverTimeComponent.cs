@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class DisableOverTimeComponent : MonoBehaviour
 {
     [SerializeField] float baseTime = 10f;
+    GameObject player;
     public float timeBeforeDisable;
     public Action onDisable;
     float elapsedTime;
@@ -13,6 +14,7 @@ public class DisableOverTimeComponent : MonoBehaviour
     private void Awake()
     {
         timeBeforeDisable = PlayerPrefs.GetFloat("Difficulty") > 1 ? baseTime/PlayerPrefs.GetFloat("Difficulty") : baseTime;
+        player = GameObject.Find("Player");
     }
 
 
@@ -30,6 +32,7 @@ public class DisableOverTimeComponent : MonoBehaviour
             onDisable.Invoke();
             objectToDisable.SetActive(false);
             elapsedTime = 0;
+            player.GetComponent<FireComponent>().ResetStreak("Too slow! Streak lost....");
         }
     }
 }

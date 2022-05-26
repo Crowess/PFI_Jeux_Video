@@ -6,9 +6,17 @@ public class TargetSpawnerComponent : MonoBehaviour
 {
     [SerializeField] ObjectPoolComponent targetPool;
     [SerializeField] GameObject joueur;
-    [SerializeField] float cooldown = 5;
-    [SerializeField] float radius = 40;
+    [SerializeField] float cooldown;
+    [SerializeField] float radius = 30;
     float elapsedTime = 0f;
+    const float baseCooldown = 5f;
+
+
+    private void Awake()
+    {
+        float difficulty = PlayerPrefs.GetFloat("Difficulty");
+        cooldown = difficulty > 0 ? baseCooldown / difficulty : baseCooldown;
+    }
 
     private void Update()
     {
@@ -24,7 +32,7 @@ public class TargetSpawnerComponent : MonoBehaviour
     void Spawn()
     {
         GameObject objectSpawned = targetPool.GetObject();
-        Vector3 positionTarget = new Vector3(2,2,2)+Random.insideUnitSphere * radius;
+        Vector3 positionTarget = new Vector3(10,10,10)+Random.insideUnitSphere * radius;
         positionTarget.y = joueur.transform.position.y;
         objectSpawned.transform.position = positionTarget;
         objectSpawned.transform.LookAt(joueur.transform);
