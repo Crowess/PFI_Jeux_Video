@@ -28,7 +28,6 @@ public class FireComponent : MonoBehaviour
         playerControls.PC.Fire.performed += (ctx) =>
         {
             ray = new Ray(exitLocation.position, exitLocation.forward);
-            Debug.DrawRay(ray.origin, ray.direction, Color.black, 100f);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
